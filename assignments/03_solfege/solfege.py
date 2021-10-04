@@ -43,7 +43,6 @@ def main():
             print('{}, {}'.format(x, answers[x]))
         else:
             print("I don't know \"%s\"" % (x))
-            # instead of x it is better to write key in keys
 
 
 # --------------------------------------------------
