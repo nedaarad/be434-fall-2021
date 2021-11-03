@@ -6,10 +6,12 @@ import random
 import string
 from subprocess import getstatusoutput
 from shutil import rmtree
-from Bio import SeqIO
 from typing import List, NamedTuple
+from Bio import SeqIO
 
 PRG = './au_pair.py'
+
+# pylint: disable=too-many-locals
 
 
 class Test(NamedTuple):

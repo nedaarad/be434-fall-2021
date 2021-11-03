@@ -82,16 +82,18 @@ def main():
 def count_kmers(fh, k):
     """Function"""
 
-    counts = {}
-    for line in fh:
+    counts = {} # kmers1 is equual to counts, it can be any name
+    for line in fh: # fh is equal to file1 and file2. If I had only file1, I could write args.file1
         for word in line.split():
-            for kmer in find_kmers(word, k):
+            for kmer in find_kmers(word, k): # args.kmer is equal to k
                 if kmer not in counts:
                     counts[kmer] = 0
-                counts[kmer] += 1
+                counts[kmer] += 1 
+                # for showing up by 1, you should write += 1
+    # print(counts)
 
     return counts
-
+    # in this part, instead of saying counts1, counts2, and so on (per each file), I intruduced a function that includes all the files.
 
 # --------------------------------------------------
 if __name__ == '__main__':
