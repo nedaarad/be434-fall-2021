@@ -26,20 +26,20 @@ def get_args():
 
 
 # --------------------------------------------------
-def run_length_encoding(seq):
-    """define the run length encoding function"""
-    compressed = []
+def rle(seq):
+    """define the rle function"""
+    zipped = []
     count = 1
-    char = seq[0]
+    var = seq[0]
     for i in range(1, len(seq)):
-        if seq[i] == char:
+        if seq[i] == var:
             count = count + 1
         else:
-            compressed.append([char, count])
-            char = seq[i]
+            zipped.append([var, count])
+            var = seq[i]
             count = 1
-    compressed.append([char, count])
-    return compressed
+    zipped.append([var, count])
+    return zipped
 
 
 # --------------------------------------------------
@@ -48,12 +48,12 @@ def main():
 
     args = get_args()
     seq = args.str
-    list = run_length_encoding(seq)
-    compressed_seq = ''
+    list = rle(seq)
+    zipped_seq = ''
     for i in range(0, len(list)):
-        for j in list[i]:
-            compressed_seq += str(j)
-    string = compressed_seq.replace("1", "")
+        for x in list[i]:
+            zipped_seq += str(x)
+    string = zipped_seq.replace('1', '')
     print(string, end='')
     print()
 
