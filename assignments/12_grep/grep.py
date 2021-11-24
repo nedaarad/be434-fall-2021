@@ -50,15 +50,14 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
+    num_files = len(args.files)
 
     for fh in args.files:
         for line in fh:
-            if args.insensitive:
-                if re.search(args.pattern, line, re.IGNORECASE):
-                    print(line, end='', file=args.outfile)
-            else:
-                if re.search(args.pattern, line):
-                    print(line, end='', file=args.outfile)
+            if re.search(args.pattern, line,
+                         re.IGNORECASE if args.insensitive else 0):
+                args.outfile.write('{}{}'.format(
+                    f'{fh.name}:' if num_files > 1 else '', line))
 
 
 # --------------------------------------------------
