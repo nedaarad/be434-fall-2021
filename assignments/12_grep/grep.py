@@ -24,7 +24,7 @@ def get_args():
                         type=str,
                         help='Search pattern')
 
-    parser.add_argument('file',
+    parser.add_argument('files',
                         metavar='FILE',
                         type=argparse.FileType('rt'),
                         nargs='+',
@@ -37,7 +37,7 @@ def get_args():
 
     parser.add_argument('-o',
                         '--outfile',
-                        help='Output',
+                        help='Output file',
                         metavar='FILE',
                         type=argparse.FileType('wt'),
                         default=sys.stdout)
@@ -50,7 +50,15 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    print(args)
+
+    for fh in args.files:
+        for line in fh:
+            if args.insensitive:
+                if re.search(args.pattern, line, re.IGNORECASE):
+                    print(line, end='', file=args.outfile)
+            else:
+                if re.search(args.pattern, line):
+                    print(line, end='', file=args.outfile)
 
 
 # --------------------------------------------------
