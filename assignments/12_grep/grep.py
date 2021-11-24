@@ -10,6 +10,8 @@ import sys
 import re
 
 # --------------------------------------------------
+
+
 def get_args():
     """Get command-line arguments"""
 
@@ -19,19 +21,19 @@ def get_args():
 
     parser.add_argument('pattern',
                         metavar='PATTERN',
-                        type=argparse.FileType('rt'),
+                        type=str,
                         help='Search pattern')
 
     parser.add_argument('file',
                         metavar='FILE',
                         type=argparse.FileType('rt'),
-                        help='Input file(s)')                    
+                        nargs='+',
+                        help='Input file(s)')
 
     parser.add_argument('-i',
                         '--insensitive',
-                        metavar='str',
                         help='Case-insensitive search',
-                        default=False)
+                        action='store_true')
 
     parser.add_argument('-o',
                         '--outfile',
